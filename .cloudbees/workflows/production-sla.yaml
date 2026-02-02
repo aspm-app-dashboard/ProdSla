@@ -1,0 +1,15 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Production SLA
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    steps:
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: aspm-prod-env
+          artifact-id: 0814ee12-0a19-4437-872a-61d0a1404695
+          target-environment: aspm-prod-env
